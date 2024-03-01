@@ -2,6 +2,7 @@
  *
  * D++, A Lightweight C++ library for Discord
  *
+ * SPDX-License-Identifier: Apache-2.0
  * Copyright 2021 Craig Edwards and D++ contributors 
  * (https://github.com/brainboxdotcc/DPP/graphs/contributors)
  *
@@ -39,8 +40,6 @@
 #define DISCORD_API_VERSION	"10"
 #define API_PATH	        "/api/v" DISCORD_API_VERSION
 namespace dpp {
-
-using json = nlohmann::json;
 
 // Forward declarations
 class cluster;
@@ -360,7 +359,7 @@ public:
 	/**
 	 * @brief List of voice channels we are connecting to keyed by guild id
 	 */
-	std::unordered_map<snowflake, voiceconn*> connecting_voice_channels;
+	std::unordered_map<snowflake, std::unique_ptr<voiceconn>> connecting_voice_channels;
 
 	/**
 	 * @brief The gateway address we reconnect to when we resume a session
@@ -524,4 +523,4 @@ public:
 	voiceconn* get_voice(snowflake guild_id);
 };
 
-};
+} // namespace dpp
