@@ -87,7 +87,7 @@ public:
 			/* if the type is signed, at compile-time, add a check at runtime that the value is unsigned */
 			if (snowflake_val < 0) {
 				value = 0;
-				throw dpp::logic_exception{"cannot assign a negative value to dpp::snowflake"};
+				//throw dpp::logic_exception{"cannot assign a negative value to dpp::snowflake"};
 			}
 		}
 	}

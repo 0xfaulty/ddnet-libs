@@ -184,7 +184,7 @@ public:
 	 */
 	[[nodiscard]] bool await_ready() const {
 		if (!handle) {
-			throw dpp::logic_exception{"cannot co_await an empty task"};
+			//throw dpp::logic_exception{"cannot co_await an empty task"};
 		}
 		return handle.promise().state.load() == state_t::done;
 	}
